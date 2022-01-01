@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "haolongBot"
+version = "0.1.0"
+description = "haolongBot"
+authors = []
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.7.3"
+nonebot2 = "^2.0.0.a1"
+
+[tool.poetry.dev-dependencies]
+nb-cli = "^0.5.0"
+nonebot-plugin-test = "^0.3.0"
+
+[nonebot.plugins]
+plugins = ["haruka_bot", "nonebot_plugin_apscheduler"]
+plugin_dirs = ["haolongbot/plugins"]
+
+[build-system]
+requires = ["poetry_core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "aliyun"
+url = "https://mirrors.aliyun.com/pypi/simple/"
+default = true
