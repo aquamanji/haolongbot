@@ -10,7 +10,6 @@ nonebot.init(apscheduler_config={
 driver.register_adapter("cqhttp", CQHTTPBot)
 nonebot.load_builtin_plugins()
 nonebot.load_plugin('haolongbot.plugins.haruka_bot')
-# nonebot.load_plugin("haolongbot.plugins.nonebot_plugin_biliav")
 nonebot.load_plugin("haolongbot.plugins.nonebot_plugin_analysis_bilibili")
 nonebot.load_plugin("haolongbot.plugins.haolong_picsearch")
 nonebot.load_plugin("haolongbot.plugins.haolong_america_xinguan")

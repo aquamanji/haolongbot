@@ -15,6 +15,7 @@ class DB:
         return self
 
     async def __aexit__(self, exc_type, exc_val, exc_tb):
+        Tortoise.close_connections()
         pass
 
     # 初始化db
@@ -23,7 +24,7 @@ class DB:
         # 会自动创建一个db.sqlite3
         # 把对应的关系放到modules={'models': ['models']}
         await Tortoise.init(
-            db_url=f"sqlite://{get_path('xgdb.sqlite3')}",
+            db_url=f"sqlite://{get_path('data.sqlite3')}",
             modules={'models': [locals()['models']]}
         )
         # 创建连接

@@ -11,7 +11,7 @@ from tortoise.queryset import QuerySet
 
 from ..utils import get_path
 from ..version import __version__
-from .models import Group, Sub, User
+from .models import Group, Sub, User,mg
 from .models import Version as DBVersion
 
 uid_list = {'live': {'list': [], 'index': 0},
@@ -26,6 +26,20 @@ class DB:
 
     async def __aexit__(self, exc_type, exc_val, exc_tb):
         pass
+
+    async def datasave(self, msga):
+        if await mg.exists(id=1):
+            await mg.filter(id=1).update(msg=msga)
+        else:
+            await mg.create(id=1, msg=msga)
+
+    async def dataget(self):
+        if await mg.exists(id=1):
+            p1 = await mg.get(id=1).values()
+            return p1
+        else:
+            return None
+
 
     @classmethod
     async def init(cls):

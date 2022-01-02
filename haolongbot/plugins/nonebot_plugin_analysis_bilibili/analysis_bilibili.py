@@ -122,7 +122,7 @@ async def video_detail(url):
         if len(desc_list) > 4:
             desc = desc_list[0] + "\n" + desc_list[1] + "\n" + desc_list[2] + "……" 
         bfldm = f"播放量{res['stat']['view']} 弹幕{res['stat']['danmaku']}\n"
-        msg = MessageSegment.image(file=res['pic'])+str(vurl)+str(title)+str(up)+str(bfldm)+str(desc)
+        msg = MessageSegment.image(file=res['pic'])+str(vurl)+str(title)+str(up)+str(bfldm)
         return msg, vurl
     except Exception as e:
         msg = "视频解析出错--Error: {}".format(type(e))

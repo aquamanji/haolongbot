@@ -5,8 +5,7 @@ import aiohttp
 import lxml.html
 from datetime import datetime
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from tortoise import run_async
-from .db.db import *
+from ..haruka_bot.database.db import *
 from nonebot import require
 scheduler = require("nonebot_plugin_apscheduler").scheduler
 

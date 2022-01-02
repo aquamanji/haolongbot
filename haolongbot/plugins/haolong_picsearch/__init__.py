@@ -57,7 +57,4 @@ async def handle(bot:Bot,event:MessageEvent,state:T_State):
                 else:
                     for msg in dict_data:
                            await hpics.send(msg)
-    else:
-        await hpics.send(event=event,message="请发送图片给我喵/或者可能图片没了喵")
                     
-
