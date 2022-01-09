@@ -3,9 +3,9 @@ from typing import List, Tuple
 from urllib.parse import urljoin
 
 from lxml.html import fromstring
+import cfscrape
 import aiohttp
 from nonebot.adapters.cqhttp import MessageSegment
-
 from .proxy import proxy
 
 
@@ -44,11 +44,14 @@ async def get_pic_from_url(url: str):
     base_base_url = "https://ascii2d.net"
     base_url = base_base_url+"/search/url/"
     real_url = base_url + url +"?type=color"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36 Edg/97.0.1072.55"
+    }
     async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(limit=64,verify_ssl=False)) as session:
-        async with session.get(real_url, proxy=proxy) as resp:
+        async with session.get(real_url,headers=headers) as resp:
             html: str = await resp.text()
-        async with session.get(base_base_url+await get_ascii2d_str(html), proxy=proxy) as resp:
-            html2: str = await resp.text()
+            async with session.get(base_base_url+await get_ascii2d_str(html), headers=headers) as resp:
+                html2: str = await resp.text()
         return [i for i in parse_html(html)]+[b for b in parse_html(html2)]
 
 
