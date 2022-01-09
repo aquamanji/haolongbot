@@ -14,6 +14,7 @@ nonebot.load_plugin("haolongbot.plugins.nonebot_plugin_analysis_bilibili")
 nonebot.load_plugin("haolongbot.plugins.haolong_picsearch")
 nonebot.load_plugin("haolongbot.plugins.haolong_america_xinguan")
 nonebot.load_plugin("haolongbot.plugins.haolong_longtu")
+nonebot.load_plugin("nonebot_plugin_gamedraw")
 
 if __name__ == "__main__":
     nonebot.run()

@@ -17,7 +17,7 @@ nb-cli = "^0.5.0"
 nonebot-plugin-test = "^0.3.0"
 
 [nonebot.plugins]
-plugins = ["haruka_bot", "nonebot_plugin_apscheduler"]
+plugins = ["haruka_bot", "nonebot_plugin_apscheduler", "nonebot_plugin_gamedraw"]
 plugin_dirs = ["haolongbot/plugins"]
 
 [build-system]

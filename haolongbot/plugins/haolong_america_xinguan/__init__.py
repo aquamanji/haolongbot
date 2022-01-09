@@ -17,12 +17,12 @@ config = Config(**global_config.dict())
 
 scheduler = require('nonebot_plugin_apscheduler').scheduler
 a = 0
-@scheduler.scheduled_job('interval',seconds=86400000,id='Amrsavetodb')
+@scheduler.scheduled_job('interval',seconds=43200,id='Amrsavetodb')
 async def getmsgtodb():
     print("savedb运行中")
     await savetodb()
 
-yq = on_keyword(["美国","润了","麻了"],priority=5)
+yq = on_keyword(["赢麻了","中国赢了","麻了","这就是","美国","北欧"],priority=5)
 
 @yq.handle()
 async def fs(bot: Bot, event: Event, state: T_State):
