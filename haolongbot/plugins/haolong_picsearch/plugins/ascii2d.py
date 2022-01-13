@@ -3,7 +3,6 @@ from typing import List, Tuple
 from urllib.parse import urljoin
 
 from lxml.html import fromstring
-import cfscrape
 import aiohttp
 from nonebot.adapters.cqhttp import MessageSegment
 from .proxy import proxy
