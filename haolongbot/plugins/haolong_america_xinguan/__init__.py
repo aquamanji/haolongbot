@@ -1,4 +1,5 @@
 from pathlib import Path
+import random
 
 # import nonebot
 from nonebot import get_driver
@@ -31,4 +32,8 @@ async def fs(bot: Bot, event: Event, state: T_State):
         await getmsgtodb()
         a=a+1
     msg = await readamdb()
-    await bot.send(event=event, message=str(msg))
+    b = random.randint(0,9)
+    if(b==0):
+        await bot.send(event=event, message=str(msg))
+    else:
+        print("未触发美国")
