@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 def is_chinese(uchar):
-    if uchar >= '\u4e00' and uchar <= '\u9fa5':
+    if (uchar >= '\u4e00' and uchar <= '\u9fa5') or (uchar>='\u30' and uchar<='\u39'):
         return True
     else:
         return False
@@ -15,6 +15,26 @@ def saveChinese(content):
     content_str = ''
     for i in content:
         if is_chinese(i):
+            if i == '1':
+                i = '一'
+            elif i==2:
+                i='二'
+            elif i==3:
+                i='三'
+            elif i==4:
+                i='四'
+            elif i==5:
+                i='五'
+            elif i==6:
+                i='六'
+            elif i==7:
+                i='七'
+            elif i==8:
+                i='八'
+            elif i==9:
+                i='九'
+            elif i==0:
+                i='零'
             content_str += i
     return content_str
 
