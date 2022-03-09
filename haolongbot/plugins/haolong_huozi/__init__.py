@@ -17,9 +17,9 @@ from .data_source import *
 global_config = get_driver().config
 config = Config(**global_config.dict())
 
-huozijr = on_command("嘉然活字印刷", rule=to_me(), priority=5)
-huoziotto = on_command("otto活字印刷", rule=to_me(), priority=5)
-huoziqihai = on_command("七海活字印刷", rule=to_me(), priority=5)
+huozijr = on_command("嘉然活字印刷",priority=5)
+huoziotto = on_command("otto活字印刷",priority=5)
+huoziqihai = on_command("七海活字印刷",priority=5)
 
 @huozijr.handle()
 async def fs(bot: Bot, event: Event, state: T_State):

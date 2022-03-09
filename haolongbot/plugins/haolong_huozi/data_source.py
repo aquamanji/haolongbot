@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 def is_chinese(uchar):
-    if (uchar >= '\u4e00' and uchar <= '\u9fa5') or (uchar>='\u30' and uchar<='\u39'):
+    if (uchar >= '\u4e00' and uchar <= '\u9fa5') or (uchar>='\u0030' and uchar<='\u0039'):
         return True
     else:
         return False
