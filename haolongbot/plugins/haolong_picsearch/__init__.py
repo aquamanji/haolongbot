@@ -34,7 +34,9 @@ async def handle(bot:Bot,event:MessageEvent,state:T_State):
         for i in msg:
             if(i.type == "image"):
                 await bot.send(event=event, message="正在处理图片喵")
-                msgs: Message = sum([msg if isinstance(msg, Message) else Message(msg) async for msg in get_des_sau(i.data["url"])]+
+                msgs: Message = sum(
+                [msg if isinstance(msg, Message) else Message(msg) async for msg in get_des_sau(i.data["url"])]
+                +
                 [msg if isinstance(msg, Message) else Message(msg) async for msg in get_des_asc(i.data["url"])]
                 )
                 dict_data = json.loads(json.dumps(msgs, cls=DataclassEncoder))
