@@ -43,7 +43,7 @@ async def fs2(bot: Bot, event: Event, state: T_State):
             evelist = event.get_session_id().split('_')
             if(evelist[0] =='group'):
                 if(evelist[1]=='421803828' or evelist[1] == '807900779'):
-                    filefullname = random.choice('tmspade.wav','tmspade2.wav')
+                    filefullname = random.choice(['tmspade.wav','tmspade2.wav'])
             break
     fileurl = getSelectedvalueFile(filefullname,'voice')
     await bot.send(event=event,message=MessageSegment.record(file = fileurl))
