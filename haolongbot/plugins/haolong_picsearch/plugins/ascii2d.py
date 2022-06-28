@@ -5,11 +5,13 @@ from urllib.parse import urljoin
 from lxml.html import fromstring
 import aiohttp
 from nonebot.adapters.cqhttp import MessageSegment
+
+from haolongbot.plugins.haolong_picsearch.plugins.msk import getrandomjpname, msktoimg
 from .proxy import proxy
 
 from PicImageSearch import Ascii2D, Network
 from PicImageSearch.model import Ascii2DResponse
-
+import random
 
 proxies = None
 bovw = True  # 是否使用特征检索
@@ -48,9 +50,13 @@ async def get_des(url: str):
         for pic in image_data:
             if asc2dcomputer<2 :
                 asc2dcomputer= asc2dcomputer+1
-                msg = MessageSegment.image(file=pic.thumbnail)+ f"ascii2d检索方式：色合\n名字:{pic.title}\n作者:{pic.author}\n原图地址:{pic.url}"
+                randomjpgname = "out"+str(random.randint(0,9999))+str(random.randint(0,9999))+str(random.randint(0,9999))+".jpg"
+                msktoimg(url=pic.thumbnail,randomjpgname=randomjpgname)
+                msg = MessageSegment.image(file=getrandomjpname(randomjpgname))+ f"ascii2d检索方式：色合\n名字:{pic.title}\n作者:{pic.author}\n原图地址:{pic.url}"
             else:
-                msg = MessageSegment.image(file=pic.thumbnail)+ f"ascii2d检索方式：特征\n名字:{pic.title}\n作者:{pic.author}\n原图地址:{pic.url}"
+                randomjpgname = "out"+str(random.randint(0,9999))+str(random.randint(0,9999))+str(random.randint(0,9999))+".jpg"
+                msktoimg(url=pic.thumbnail,randomjpgname=randomjpgname)
+                msg = MessageSegment.image(file=getrandomjpname(randomjpgname))+ f"ascii2d检索方式：特征\n名字:{pic.title}\n作者:{pic.author}\n原图地址:{pic.url}"
             # print(pic)
             yield msg
     except:

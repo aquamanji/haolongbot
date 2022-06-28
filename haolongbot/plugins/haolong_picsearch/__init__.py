@@ -14,7 +14,7 @@ from nonebot.matcher import Matcher
 from nonebot.adapters.cqhttp import Bot, MessageEvent, GroupMessageEvent, PrivateMessageEvent, Message
 from nonebot.utils import DataclassEncoder
 
-
+import os
 from .plugins.saucenao import get_des as get_des_sau
 from .plugins.ascii2d import get_des as get_des_asc
 
@@ -33,7 +33,7 @@ async def handle(bot:Bot,event:MessageEvent,state:T_State):
     if("[CQ:image," in str(msg)):
         for i in msg:
             if(i.type == "image"):
-                await bot.send(event=event, message="正在处理图片喵")
+                await bot.send(event=event, message="正在处理图片喵 返回会有高斯模糊喵")
                 msgs: Message = sum(
                 [msg if isinstance(msg, Message) else Message(msg) async for msg in get_des_sau(i.data["url"])]
                 +
@@ -59,4 +59,7 @@ async def handle(bot:Bot,event:MessageEvent,state:T_State):
                 else:
                     for msg in dict_data:
                            await hpics.send(msg)
-                    
+                for msgfile in dict_data:
+                    if msgfile['type'] == 'image':
+                        picfilename = msgfile['data']['file'][8:]
+                        os.remove(picfilename)

@@ -6,12 +6,14 @@ import aiohttp
 from lxml.html import fromstring
 from nonebot.adapters.cqhttp import MessageSegment
 
+from haolongbot.plugins.haolong_picsearch.plugins.msk import getrandomjpname, msktoimg
+
 from .formdata import FormData
 from .proxy import proxy
 
 from PicImageSearch import Network, SauceNAO
 from PicImageSearch.model import SauceNAOResponse
-
+import random
 
 api_key = "77479bbb5a93b2a31d2647d275e9bf5831f2bac0"
 proxies = None
@@ -31,9 +33,11 @@ async def get_des(url: str):
             yield msg
             return
         for pic in image_data:
-            msg = MessageSegment.image(file=pic.thumbnail) + f"saucenao搜索:\n相似度:{pic.similarity}\n标题:{pic.title}\n图片地址:{pic.url}\n作者:{pic.url}\n"
+            randomjpgname = "out"+str(random.randint(0,9999))+str(random.randint(0,9999))+str(random.randint(0,9999))+".jpg"
+            msktoimg(url=pic.thumbnail,randomjpgname=randomjpgname)
+            print(randomjpgname)
+            msg = MessageSegment.image(file=getrandomjpname(randomjpgname)) + f"saucenao搜索:\n相似度:{pic.similarity}\n标题:{pic.title}\n图片地址:{pic.url}\n作者:{pic.url}\n"
             yield msg
     except:
         msg: str = "网络爆炸喵"
         yield msg
-    pass
