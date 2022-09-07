@@ -8,8 +8,8 @@ from .config import Config
 from nonebot import on_command, require, get_driver,on_keyword
 from nonebot.typing import T_State
 from nonebot.adapters import Bot, Event
-from nonebot.adapters.cqhttp.message import Message, MessageSegment
-from nonebot.adapters.cqhttp.utils import escape,unescape
+from nonebot.adapters.onebot.v11.message import Message, MessageSegment
+from nonebot.adapters.onebot.v11.utils import escape,unescape
 from nonebot.rule import to_me
 import os
 from .data_source import *

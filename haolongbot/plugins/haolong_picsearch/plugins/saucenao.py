@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 import io
 from typing import List, Tuple
+from unicodedata import name
 
 import aiohttp
 from lxml.html import fromstring
-from nonebot.adapters.cqhttp import MessageSegment
+from nonebot.adapters.onebot.v11 import Bot, MessageEvent, GroupMessageEvent, PrivateMessageEvent, Message,MessageSegment
 
 from haolongbot.plugins.haolong_picsearch.plugins.msk import getrandomjpname, msktoimg
 
